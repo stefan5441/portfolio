@@ -44,10 +44,10 @@ app.get("/activity/leetcode", async (req: Request, res: Response) => {
       const date = new Date(+timestamp * 1000).toISOString().split("T")[0];
       const c = Number(count);
       let level = 0;
-      if (c >= 1 && c <= 2) level = 1;
-      else if (c <= 5) level = 2;
-      else if (c <= 10) level = 3;
-      else if (c >= 11) level = 4;
+      if (c == 1) level = 1;
+      else if (c == 2 || c == 3) level = 2;
+      else if (c == 4 || c == 5) level = 3;
+      else if (c > 5) level = 4;
 
       return { date, count: c, level };
     });
@@ -81,10 +81,10 @@ app.get("/activity/codeforces", async (req: Request, res: Response) => {
     const result = Object.entries(submissionMap).map(([date, count]) => {
       const c = Number(count);
       let level = 0;
-      if (c >= 1 && c <= 2) level = 1;
-      else if (c <= 5) level = 2;
-      else if (c <= 10) level = 3;
-      else if (c >= 11) level = 4;
+      if (c == 1) level = 1;
+      else if (c == 2 || c == 3) level = 2;
+      else if (c == 4 || c == 5) level = 3;
+      else if (c > 5) level = 4;
 
       return { date, count: c, level };
     });
