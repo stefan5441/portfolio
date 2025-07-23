@@ -5,7 +5,3 @@ Accept: application/json
 ### Test Codeforces Activity GET
 GET http://localhost:3000/activity/codeforces?username=widepeepohappy18
 Accept: application/json
-
-### Test Github Activity GET
-GET http://localhost:3000/activity/github?username=stefan5441
-Accept: application/json
