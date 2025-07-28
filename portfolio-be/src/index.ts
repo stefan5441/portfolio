@@ -1,4 +1,5 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
+import cors from "cors";
 import express, { Request, Response } from "express";
 
 const app = express();
@@ -8,6 +9,12 @@ const LEETCODE_URL = "https://leetcode.com/graphql";
 const CODEFORCES_URL = "https://codeforces.com/api/user.status";
 
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 
 app.get("/activity/leetcode", async (req: Request, res: Response) => {
   const username = req.query.username as string;

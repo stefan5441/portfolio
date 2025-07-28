@@ -1,24 +1,11 @@
-export const fetchLeetCodeActivity = async (username: string) => {
-  const res = await fetch("https://leetcode.com/graphql", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: `
-        query getUserProfileCalendar($username: String!) {
-          matchedUser(username: $username) {
-            userCalendar {
-              submissionCalendar
-            }
-          }
-        }
-      `,
-      variables: { username },
-    }),
-  });
+import axios from "axios";
 
-  const data = await res.json();
-  const calendar = JSON.parse(data.data.matchedUser.userCalendar.submissionCalendar);
-  return calendar;
+export const fetchLeetCodeActivity = async (username: string) => {
+  const response = await axios.get(`http://localhost:3000/activity/leetcode?username=${username}`);
+  return response.data;
+};
+
+export const fetchCodeforcesActivity = async (username: string) => {
+  const response = await axios.get(`http://localhost:3000/activity/codeforces?username=${username}`);
+  return response.data;
 };
