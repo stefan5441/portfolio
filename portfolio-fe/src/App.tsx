@@ -6,7 +6,9 @@ function App() {
     <div className="mx-24 my-20">
       <Header>Stefan Chambov</Header>
 
-      <div>Check what I'm doing lately: </div>
+      {/* to remove margin later */}
+      <div className="mt-4">Check what I'm doing lately: </div>
+      <div className="mt-2"></div>
       <CPActivityHeatmap />
     </div>
   );
