@@ -1,14 +1,7 @@
-export enum Month {
-  January = "JANUARY",
-  February = "FEBRUARY",
-  March = "MARCH",
-  April = "APRIL",
-  May = "MAY",
-  June = "JUNE",
-  July = "JULY",
-  August = "AUGUST",
-  September = "SEPTEMBER",
-  October = "OCTOBER",
-  November = "NOVEMBER",
-  December = "DECEMBER",
-}
+export type HeatmapActivity = {
+  date: string;
+  count: number;
+  level: number;
+};
+
+export type HeatmapCell = HeatmapActivity | "invisible" | "month-separator";
