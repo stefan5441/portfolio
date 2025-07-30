@@ -28,7 +28,7 @@ export const ActivityHeatmapMonth: React.FC<Props> = ({
             return <div key={i} className="w-3 h-3 bg-transparent" />;
           }
           return (
-            <Tooltip key={i} content={`${a.count} activities on ${a.date}`}>
+            <Tooltip key={i} content={`${a.count} ${a.count === 1 ? "activity" : "activities"} on ${a.date}`}>
               <div
                 key={i}
                 className={`w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5  hover:border-2 hover:border-sky-100 rounded-xs lg:rounded-sm ${
