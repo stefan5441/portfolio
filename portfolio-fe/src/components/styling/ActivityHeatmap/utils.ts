@@ -54,28 +54,41 @@ export function getHeatmapMonthData(
     }
   }
 
-  function formatDate(date: Date): string {
+  function formatKey(date: Date): string {
     const yyyy = date.getFullYear();
     const mm = String(date.getMonth() + 1).padStart(2, "0");
     const dd = String(date.getDate()).padStart(2, "0");
     return `${yyyy}-${mm}-${dd}`;
   }
 
-  const current = new Date(startDate);
+  function formatDisplay(date: Date): string {
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  }
 
+  const current = new Date(startDate);
   addInvisibleCells(current.getDay());
 
   while (current <= endDate) {
-    const formattedCurrentDate = formatDate(current);
-    if (formattedCurrentDate in activityMap) {
-      result.push(activityMap[formattedCurrentDate]);
+    const key = formatKey(current);
+    const displayDate = formatDisplay(current);
+
+    if (key in activityMap) {
+      result.push({
+        ...activityMap[key],
+        date: displayDate,
+      });
     } else {
       result.push({
-        date: formattedCurrentDate,
+        date: displayDate,
         count: 0,
         level: 0,
       });
     }
+
     current.setDate(current.getDate() + 1);
   }
 

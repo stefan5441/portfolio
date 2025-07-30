@@ -3,5 +3,5 @@ type Props = {
 };
 
 export const Header: React.FC<Props> = ({ children }) => {
-  return <h1 className="text-4xl font-bold">{children}</h1>;
+  return <h1 className="text-2xl font-semibold">{children}</h1>;
 };
